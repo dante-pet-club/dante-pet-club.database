@@ -21,21 +21,21 @@ CREATE TABLE "confirmation" (
 
 CREATE TABLE "country" (
   "id" int PRIMARY KEY NOT NULL,
-  "name" varchar(35) NOT NULL,
-  "gentilic" varchar(35) NOT NULL
+  "name" varchar(35) NOT NULL
+--   "gentilic" varchar(35) NOT NULL
 );
 
 CREATE TABLE "state" (
   "id" int PRIMARY KEY NOT NULL,
-  "name" varchar(35) NOT NULL,
-  "gentilic" varchar(35) NOT NULL,
+  "name" varchar(60) NOT NULL,
+--   "gentilic" varchar(35) NOT NULL,
   "country_id" int NOT NULL
 );
 
 CREATE TABLE "city" (
   "id" int PRIMARY KEY NOT NULL,
   "name" varchar(35) NOT NULL,
-  "gentilic" varchar(35),
+--   "gentilic" varchar(35),
   "state_id" int NOT NULL
 );
 

@@ -1,5 +1,7 @@
 import datetime
 from dateutil.relativedelta import relativedelta
+import pandas as pd
+import os
 
 # from faker import Faker
 # import numpy as np
@@ -24,7 +26,7 @@ identification_type = [
         "created_at": datetime.datetime.now(),
     },
     {
-        "id": 3,
+        "id": 4,
         "name": "Cédula de extranjería",
         "description": "ID for foreigners",
         "created_at": datetime.datetime.now(),
@@ -92,3 +94,14 @@ gender = [
     {"gender": "no binario"},
     {"gender": "otro"},
 ]
+
+parquet_dir = f"{os.getcwd()}/parquet"
+
+city = pd.read_parquet(f"{parquet_dir}/cities_clean.parquet")
+state = pd.read_parquet(f"{parquet_dir}/states_clean.parquet")
+country = pd.read_parquet(f"{parquet_dir}/countries_clean.parquet")
+# city = pd.read_parquet(f"{parquet_dir}/cities_clean.parquet").to_dict(orient="records")
+# state = pd.read_parquet(f"{parquet_dir}/states_clean.parquet").to_dict(orient="records")
+# country = pd.read_parquet(f"{parquet_dir}/countries_clean.parquet").to_dict(
+#     orient="records"
+# )

@@ -1,5 +1,6 @@
 import psycopg
 import utils.statements
+import pandas as pd
 
 
 def build_insert_statement(statement: str, table_name: str, data: list[dict]) -> str:
@@ -20,6 +21,19 @@ def generic_insert(
     for entry in data:
         try:
             cur.execute(statement, entry)
+        except Exception as e:
+            print(e)
+            print(entry)
+            return
+
+
+def parquet_insert(
+    cur: psycopg.cursor, statement: str, table_name: str, df: pd.DataFrame
+):
+    statement = build_insert_statement(statement, table_name, [df.iloc[0].to_dict()])
+    for index, entry in df.iterrows():
+        try:
+            cur.execute(statement, entry.to_dict())
         except Exception as e:
             print(e)
             print(entry)
