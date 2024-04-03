@@ -24,24 +24,37 @@ def batch_insert(cur: psycopg.cursor):
     ut.generic_insert(cur, insert_statement, "sex", dt.sex)
     ut.generic_insert(cur, insert_statement, "gender", dt.gender)
     ut.generic_insert(cur, insert_statement, "hobby", dt.hobby)
+    ut.generic_insert(cur, insert_statement, "coat", dt.coat)
+    ut.generic_insert(cur, insert_statement, "avatar", dt.avatar)
 
     ut.parquet_insert(cur, insert_statement, "country", dt.country)
     ut.parquet_insert(cur, insert_statement, "state", dt.state)
     ut.parquet_insert(cur, insert_statement, "city", dt.city)
 
+    ut.generic_insert(cur, insert_statement, "owner", dt.owner)
+    ut.generic_insert(cur, insert_statement, "dog", dt.dog)
+    ut.generic_insert(cur, insert_statement, "dog_owner", dt.dog_owner)
+
 
 def batch_delete(cur: psycopg.cursor):
     # Stage 3
+    ut.generic_delete(cur, "dog_owner")
+    ut.generic_delete(cur, "owner")
+    ut.generic_delete(cur, "dog")
+
     ut.generic_delete(cur, "city")
     ut.generic_delete(cur, "state")
     ut.generic_delete(cur, "country")
+
     ut.generic_delete(cur, "gender")
     ut.generic_delete(cur, "sex")
     ut.generic_delete(cur, "size")
     ut.generic_delete(cur, "confirmation")
     ut.generic_delete(cur, "status")
     ut.generic_delete(cur, "identification_type")
-    # ut.generic_delete(cur, "hobby")
+    ut.generic_delete(cur, "coat")
+    ut.generic_delete(cur, "hobby")
+    ut.generic_delete(cur, "avatar")
 
 
 with psycopg.connect(**connection_string) as conn:

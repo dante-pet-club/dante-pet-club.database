@@ -57,11 +57,19 @@ CREATE TABLE "avatar" (
   "url" varchar(100) NOT NULL
 );
 
+CREATE TABLE "coat" (
+  "id" serial PRIMARY KEY NOT NULL,
+  "name" varchar(32) NOT NULL,
+  "description" varchar(100) NOT NULL,
+  "url" varchar(100) NOT NULL
+);
+
 CREATE TABLE "owner" (
   "id" serial PRIMARY KEY NOT NULL,
   "user_name" varchar(32) UNIQUE NOT NULL,
   "email" varchar(32) UNIQUE NOT NULL,
-  "picture" int NOT NULL DEFAULT 1,
+  "phone" varchar(15) UNIQUE NOT NULL,
+  "picture" varchar(100) NOT NULL,
   "avatar" int NOT NULL DEFAULT 1,
   "password_hash" varchar(35) NOT NULL,
   "password_salt" varchar(16) NOT NULL,
@@ -73,7 +81,8 @@ CREATE TABLE "owner" (
   "second_surname" varchar(35) NOT NULL,
   "nickname" varchar(35) NOT NULL,
   "identification_type_id" int NOT NULL,
-  "identification" int UNIQUE NOT NULL,
+  "identification" varchar(15) UNIQUE NOT NULL,
+  "address" varchar(140) NOT NULL,
   "birthday" date NOT NULL,
   "birthplace" int NOT NULL,
   "gender" smallint NOT NULL,
@@ -89,7 +98,7 @@ CREATE TABLE "owner" (
 CREATE TABLE "dog" (
   "id" serial PRIMARY KEY NOT NULL,
   "first_name" varchar(35) NOT NULL,
-  "middle_name" varchar(35),
+  "middle_name" varchar(35) NOT NULL,
   "surname" varchar(35) NOT NULL,
   "second_surname" varchar(35) NOT NULL,
   "nickname" varchar(35) NOT NULL,
@@ -160,6 +169,7 @@ ALTER TABLE "dog" ADD FOREIGN KEY ("bandana_size_id") REFERENCES "size" ("id");
 ALTER TABLE "dog" ADD FOREIGN KEY ("shirt_size_id") REFERENCES "size" ("id");
 ALTER TABLE "dog" ADD FOREIGN KEY ("shoe_size_id") REFERENCES "size" ("id");
 ALTER TABLE "dog" ADD FOREIGN KEY ("sex") REFERENCES "sex" ("id");
+ALTER TABLE "dog" ADD FOREIGN KEY ("coat") REFERENCES "coat" ("id");
 
 -- Reference Table 
 ALTER TABLE "dog_owner" ADD FOREIGN KEY ("owner_id") REFERENCES "owner" ("id");
