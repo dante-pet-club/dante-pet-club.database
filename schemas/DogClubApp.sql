@@ -51,6 +51,12 @@ CREATE TABLE "gender" (
   "gender" varchar(10)
 );
 
+CREATE TABLE "avatar" (
+  "id" serial PRIMARY KEY NOT NULL,
+  "name" varchar(32) NOT NULL,
+  "url" varchar(100) NOT NULL
+);
+
 CREATE TABLE "owner" (
   "id" serial PRIMARY KEY NOT NULL,
   "user_name" varchar(32) UNIQUE NOT NULL,
@@ -90,6 +96,7 @@ CREATE TABLE "dog" (
   "height" numeric(3,1), -- cm
   "weight" numeric(3,1),
   "sterilized" bool NOT NULL DEFAULT false,
+  "description" varchar(200) NOT NULL,
   "birthday" date NOT NULL,
   "birthplace" int NOT NULL,
   "sex" smallint NOT NULL,
@@ -103,11 +110,34 @@ CREATE TABLE "dog" (
   "updated_at" timestamp without time zone
 );
 
-CREATE TABLE "pet_owner" (
-  "id" serial NOT NULL,
-  "pet_id" int NOT NULL,
+CREATE TABLE "dog_image" (
+  "id" serial PRIMARY KEY NOT NULL,
+  "dog_id" int UNIQUE NOT NULL,
+  "name" varchar(32) NOT NULL,
+  "description" varchar(100) NOT NULL,
+  "url" varchar(100) NOT NULL
+);
+
+CREATE TABLE "hobby" (
+  "id" serial PRIMARY KEY NOT NULL,
+  "name" varchar(32) NOT NULL,
+  "icon" varchar(100) NOT NULL
+);
+
+
+
+CREATE TABLE "dog_owner" (
+  "id" serial PRIMARY KEY NOT NULL,
+  "dog_id" int NOT NULL,
   "owner_id" int NOT NULL
 );
+
+CREATE TABLE "dog_hobby" (
+  "id" serial PRIMARY KEY NOT NULL,
+  "dog_id" int NOT NULL,
+  "hobby_id" int NOT NULL
+);
+
 
 -- Geographical information
 ALTER TABLE "city" ADD FOREIGN KEY ("state_id") REFERENCES "state" ("id");
@@ -122,6 +152,7 @@ ALTER TABLE "owner" ADD FOREIGN KEY ("shirt_size_id") REFERENCES "size" ("id");
 ALTER TABLE "owner" ADD FOREIGN KEY ("hat_size_id") REFERENCES "size" ("id");
 ALTER TABLE "owner" ADD FOREIGN KEY ("pants_size_id") REFERENCES "size" ("id");
 ALTER TABLE "owner" ADD FOREIGN KEY ("gender") REFERENCES "gender" ("id");
+ALTER TABLE "owner" ADD FOREIGN KEY ("avatar") REFERENCES "avatar" ("id");
 
 -- Dog Information
 ALTER TABLE "dog" ADD FOREIGN KEY ("birthplace") REFERENCES "city" ("id");
@@ -131,6 +162,10 @@ ALTER TABLE "dog" ADD FOREIGN KEY ("shoe_size_id") REFERENCES "size" ("id");
 ALTER TABLE "dog" ADD FOREIGN KEY ("sex") REFERENCES "sex" ("id");
 
 -- Reference Table 
-ALTER TABLE "pet_owner" ADD FOREIGN KEY ("owner_id") REFERENCES "owner" ("id");
-ALTER TABLE "pet_owner" ADD FOREIGN KEY ("pet_id") REFERENCES "dog" ("id");
-ALTER TABLE "pet_owner" ADD CONSTRAINT pet_owner_pk UNIQUE (owner_id, pet_id);
+ALTER TABLE "dog_owner" ADD FOREIGN KEY ("owner_id") REFERENCES "owner" ("id");
+ALTER TABLE "dog_owner" ADD FOREIGN KEY ("dog_id") REFERENCES "dog" ("id");
+ALTER TABLE "dog_image" ADD FOREIGN KEY ("dog_id") REFERENCES "dog" ("id");
+ALTER TABLE "dog_hobby" ADD FOREIGN KEY ("dog_id") REFERENCES "dog" ("id");
+ALTER TABLE "dog_hobby" ADD FOREIGN KEY ("hobby_id") REFERENCES "hobby" ("id");
+ALTER TABLE "dog_owner" ADD CONSTRAINT dog_owner_pk UNIQUE (owner_id, dog_id);
+ALTER TABLE "dog_hobby" ADD CONSTRAINT dog_hobby_pk UNIQUE (dog_id, hobby_id)

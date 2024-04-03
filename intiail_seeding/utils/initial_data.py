@@ -2,8 +2,8 @@ import datetime
 from dateutil.relativedelta import relativedelta
 import pandas as pd
 import os
+from faker import Faker
 
-# from faker import Faker
 # import numpy as np
 
 identification_type = [
@@ -93,6 +93,33 @@ gender = [
     {"gender": "mujer"},
     {"gender": "no binario"},
     {"gender": "otro"},
+]
+
+hobby = [
+    {"name": "Walking", "icon": ""},
+    {"name": "Playing Fetch", "icon": ""},
+    {"name": "Swimming", "icon": ""},
+    {"name": "Training", "icon": ""},
+    {"name": "Interactive Toys", "icon": ""},
+    {"name": "Hide and Seek", "icon": ""},
+    {"name": "Chewing", "icon": ""},
+    {"name": "Climbing", "icon": ""},
+    {"name": "Scratching", "icon": ""},
+    {"name": "Socializing", "icon": ""},
+    {"name": "Grooming", "icon": ""},
+    {"name": "Outdoor Exploration", "icon": ""},
+    {"name": "Nature Walks", "icon": ""},
+    {"name": "Agility Courses", "icon": ""},
+    {"name": "Walking in the Park", "icon": ""},
+    {"name": "Walking in the Mall", "icon": ""},
+    {"name": "Interacting with Other Dogs", "icon": ""},
+    {"name": "Interacting with Other Animals", "icon": ""},
+    {"name": "Herding", "icon": ""},
+    {"name": "Barking", "icon": ""},
+    {"name": "Howling", "icon": ""},
+    {"name": "Eating", "icon": ""},
+    {"name": "Belly Rubs", "icon": ""},
+    {"name": "Frisbee", "icon": ""},
 ]
 
 parquet_dir = f"{os.getcwd()}/parquet"

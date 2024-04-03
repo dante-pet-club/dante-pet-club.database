@@ -23,6 +23,7 @@ def batch_insert(cur: psycopg.cursor):
     ut.generic_insert(cur, insert_statement, "size", dt.size)
     ut.generic_insert(cur, insert_statement, "sex", dt.sex)
     ut.generic_insert(cur, insert_statement, "gender", dt.gender)
+    ut.generic_insert(cur, insert_statement, "hobby", dt.hobby)
 
     ut.parquet_insert(cur, insert_statement, "country", dt.country)
     ut.parquet_insert(cur, insert_statement, "state", dt.state)
@@ -40,6 +41,7 @@ def batch_delete(cur: psycopg.cursor):
     ut.generic_delete(cur, "confirmation")
     ut.generic_delete(cur, "status")
     ut.generic_delete(cur, "identification_type")
+    # ut.generic_delete(cur, "hobby")
 
 
 with psycopg.connect(**connection_string) as conn:
