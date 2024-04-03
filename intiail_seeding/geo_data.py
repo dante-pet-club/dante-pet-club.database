@@ -46,14 +46,14 @@ def main():
     colombia_id = countries_df.iloc[0]["id"]
     states_df = states_df[
         (states_df["country_id"] == colombia_id)
-        # & (states_df["name"].str.lower() == "atlántico")
+        & (states_df["name"].str.lower().isin(["atlántico", "antioquia"]))
     ]
     states_ids = states_df["id"].tolist()
     cities_df = cities_df[cities_df["state_id"].isin(states_ids)]
     # Save the modified DataFrames to Parquet files
-    cities_df.to_parquet(f"{parquet_dir}/cities_clean.parquet", index=False)
-    states_df.to_parquet(f"{parquet_dir}/states_clean.parquet", index=False)
-    countries_df.to_parquet(f"{parquet_dir}/countries_clean.parquet", index=False)
+    cities_df.to_parquet(f"{parquet_dir}/cities_test.parquet", index=False)
+    states_df.to_parquet(f"{parquet_dir}/states_test.parquet", index=False)
+    countries_df.to_parquet(f"{parquet_dir}/countries_test.parquet", index=False)
 
 
 if __name__ == "__main__":

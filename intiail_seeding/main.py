@@ -24,16 +24,16 @@ def batch_insert(cur: psycopg.cursor):
     ut.generic_insert(cur, insert_statement, "sex", dt.sex)
     ut.generic_insert(cur, insert_statement, "gender", dt.gender)
 
-    # ut.parquet_insert(cur, insert_statement, "country", dt.country)
-    # ut.parquet_insert(cur, insert_statement, "state", dt.state)
-    # ut.parquet_insert(cur, insert_statement, "city", dt.city)
+    ut.parquet_insert(cur, insert_statement, "country", dt.country)
+    ut.parquet_insert(cur, insert_statement, "state", dt.state)
+    ut.parquet_insert(cur, insert_statement, "city", dt.city)
 
 
 def batch_delete(cur: psycopg.cursor):
     # Stage 3
-    # ut.generic_delete(cur, "city")
-    # ut.generic_delete(cur, "state")
-    # ut.generic_delete(cur, "country")
+    ut.generic_delete(cur, "city")
+    ut.generic_delete(cur, "state")
+    ut.generic_delete(cur, "country")
     ut.generic_delete(cur, "gender")
     ut.generic_delete(cur, "sex")
     ut.generic_delete(cur, "size")

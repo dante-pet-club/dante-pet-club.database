@@ -97,11 +97,9 @@ gender = [
 
 parquet_dir = f"{os.getcwd()}/parquet"
 
-city = pd.read_parquet(f"{parquet_dir}/cities_clean.parquet")
-state = pd.read_parquet(f"{parquet_dir}/states_clean.parquet")
-country = pd.read_parquet(f"{parquet_dir}/countries_clean.parquet")
-# city = pd.read_parquet(f"{parquet_dir}/cities_clean.parquet").to_dict(orient="records")
-# state = pd.read_parquet(f"{parquet_dir}/states_clean.parquet").to_dict(orient="records")
-# country = pd.read_parquet(f"{parquet_dir}/countries_clean.parquet").to_dict(
-#     orient="records"
-# )
+city = pd.read_parquet(f"{parquet_dir}/cities_test.parquet")
+state = pd.read_parquet(f"{parquet_dir}/states_test.parquet")
+country = pd.read_parquet(f"{parquet_dir}/countries_test.parquet")
+# city = pd.read_parquet(f"{parquet_dir}/cities_clean.parquet")
+# state = pd.read_parquet(f"{parquet_dir}/states_clean.parquet")
+# country = pd.read_parquet(f"{parquet_dir}/countries_clean.parquet")
