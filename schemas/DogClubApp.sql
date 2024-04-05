@@ -67,9 +67,10 @@ CREATE TABLE "coat" (
 CREATE TABLE "owner" (
   "id" serial PRIMARY KEY NOT NULL,
   "user_name" varchar(32) UNIQUE NOT NULL,
-  "email" varchar(32) UNIQUE NOT NULL,
   "phone" varchar(15) UNIQUE NOT NULL,
-  "picture" varchar(100) NOT NULL,
+  "email" varchar(32) UNIQUE NOT NULL,
+  "picture" varchar(32) NOT NULL,
+  "blob_id" int NOT NULL,
   "avatar" int NOT NULL DEFAULT 1,
   "password_hash" varchar(35) NOT NULL,
   "password_salt" varchar(16) NOT NULL,
@@ -119,13 +120,21 @@ CREATE TABLE "dog" (
   "updated_at" timestamp without time zone
 );
 
+CREATE TABLE "blob" (
+  "id" serial PRIMARY KEY NOT NULL,
+  "base_url" varchar(64) NOT NULL,
+  "container" varchar(32) NOT NULL,
+  "token" varchar(160) NOT NULL
+);
+
 CREATE TABLE "dog_image" (
   "id" serial PRIMARY KEY NOT NULL,
   "dog_id" int UNIQUE NOT NULL,
-  "name" varchar(32) NOT NULL,
-  "description" varchar(100) NOT NULL,
-  "url" varchar(100) NOT NULL
+  "picture" varchar(32) NOT NULL,
+  "blob_id" int NOT NULL,
+  "description" varchar(100) NOT NULL
 );
+
 
 CREATE TABLE "hobby" (
   "id" serial PRIMARY KEY NOT NULL,
@@ -178,4 +187,6 @@ ALTER TABLE "dog_image" ADD FOREIGN KEY ("dog_id") REFERENCES "dog" ("id");
 ALTER TABLE "dog_hobby" ADD FOREIGN KEY ("dog_id") REFERENCES "dog" ("id");
 ALTER TABLE "dog_hobby" ADD FOREIGN KEY ("hobby_id") REFERENCES "hobby" ("id");
 ALTER TABLE "dog_owner" ADD CONSTRAINT dog_owner_pk UNIQUE (owner_id, dog_id);
-ALTER TABLE "dog_hobby" ADD CONSTRAINT dog_hobby_pk UNIQUE (dog_id, hobby_id)
+ALTER TABLE "dog_hobby" ADD CONSTRAINT dog_hobby_pk UNIQUE (dog_id, hobby_id);
+ALTER TABLE "owner" ADD FOREIGN KEY ("blob_id") REFERENCES "blob" ("id");
+ALTER TABLE "dog_image" ADD FOREIGN KEY ("blob_id") REFERENCES "blob" ("id");
