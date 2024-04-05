@@ -45,5 +45,15 @@ def generic_delete(cur: psycopg.cursor, table_name: str):
     cur.execute(delete_statement % table_name)
 
 
+def generic_restart(cur: psycopg.cursor, table_name: str):
+    restart_statement = utils.statements.restart_sequence_statement
+    cur.execute(restart_statement % table_name)
+
+
+def delete_restart(cur: psycopg.cursor, table_name: str):
+    generic_delete(cur, table_name)
+    generic_restart(cur, table_name)
+
+
 if __name__ == "__main__":
     print(__name__)
