@@ -79,7 +79,7 @@ CREATE TABLE "owner" (
   "first_name" varchar(35) NOT NULL,
   "middle_name" varchar(35),
   "surname" varchar(35) NOT NULL,
-  "second_surname" varchar(35) NOT NULL,
+  "second_surname" varchar(35),
   "nickname" varchar(35) NOT NULL,
   "identification_type_id" int NOT NULL,
   "identification" varchar(15) UNIQUE NOT NULL,
@@ -99,9 +99,9 @@ CREATE TABLE "owner" (
 CREATE TABLE "dog" (
   "id" serial PRIMARY KEY NOT NULL,
   "first_name" varchar(35) NOT NULL,
-  "middle_name" varchar(35) NOT NULL,
+  "middle_name" varchar(35),
   "surname" varchar(35) NOT NULL,
-  "second_surname" varchar(35) NOT NULL,
+  "second_surname" varchar(35),
   "nickname" varchar(35) NOT NULL,
   "height" numeric(3,1), -- cm
   "weight" numeric(3,1),
