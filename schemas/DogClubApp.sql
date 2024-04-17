@@ -54,14 +54,18 @@ CREATE TABLE "gender" (
 CREATE TABLE "avatar" (
   "id" serial PRIMARY KEY NOT NULL,
   "name" varchar(32) NOT NULL,
-  "url" varchar(100) NOT NULL
+  "picture" varchar(32) NOT NULL,
+  "blob_id" int NOT NULL,
+  "description" varchar(100) NOT NULL
 );
 
 CREATE TABLE "coat" (
   "id" serial PRIMARY KEY NOT NULL,
   "name" varchar(32) NOT NULL,
-  "description" varchar(100) NOT NULL,
-  "url" varchar(100) NOT NULL
+  "picture" varchar(32) NOT NULL,
+  "thumbnail" varchar(32) NOT NULL,
+  "blob_id" int NOT NULL,
+  "description" varchar(100) NOT NULL
 );
 
 CREATE TABLE "owner" (
@@ -190,3 +194,5 @@ ALTER TABLE "dog_owner" ADD CONSTRAINT dog_owner_pk UNIQUE (owner_id, dog_id);
 ALTER TABLE "dog_hobby" ADD CONSTRAINT dog_hobby_pk UNIQUE (dog_id, hobby_id);
 ALTER TABLE "owner" ADD FOREIGN KEY ("blob_id") REFERENCES "blob" ("id");
 ALTER TABLE "dog_image" ADD FOREIGN KEY ("blob_id") REFERENCES "blob" ("id");
+ALTER TABLE "avatar" ADD FOREIGN KEY ("blob_id") REFERENCES "blob" ("id");
+ALTER TABLE "coat" ADD FOREIGN KEY ("blob_id") REFERENCES "blob" ("id");

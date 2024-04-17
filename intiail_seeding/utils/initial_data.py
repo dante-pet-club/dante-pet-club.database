@@ -84,9 +84,30 @@ size = [
 ]
 
 avatar = [
-    {"name": "robot", "url": "http://robot_avatar.com"},
-    {"name": "dog", "url": "http://dog_avatar.com"},
-    {"name": "wolf", "url": "http://wolf_avatar.com"},
+    {
+        "name": "clarise",
+        "picture": "1.svg",
+        "blob_id": 2,
+        "description": "generic description",
+    },
+    {
+        "name": "julia",
+        "picture": "2.svg",
+        "blob_id": 2,
+        "description": "generic description",
+    },
+    {
+        "name": "andy",
+        "picture": "3.svg",
+        "blob_id": 2,
+        "description": "generic description",
+    },
+    {
+        "name": "john",
+        "picture": "4.svg",
+        "blob_id": 2,
+        "description": "generic description",
+    },
 ]
 
 sex = [
@@ -103,10 +124,20 @@ gender = [
 
 blob = [
     {
-        "base_url": "https://dantepetclub.blob.core.windows.net/ ",
+        "base_url": "https://dantepetclub.blob.core.windows.net/",
         "container": "profilepicture/",
         "token": "?sp=r&st=2024-04-05T01:55:22Z&se=2024-09-11T09:55:22Z&spr=https&sv=2022-11-02&sr=c&sig=ovRTKpszlShJT2HCYUaNKgmBDtdR6T3%2F0%2BhIiiTIXKI%3D",
-    }
+    },
+    {
+        "base_url": "https://dantepetclub.blob.core.windows.net/",
+        "container": "avatar/",
+        "token": "?sp=r&st=2024-04-17T14:39:10Z&se=2025-12-10T22:39:10Z&spr=https&sv=2022-11-02&sr=c&sig=a5xyqAfanZkfWtVGCeK1fmfeAgLZkvVRvwsllUE%2FGbA%3D",
+    },
+    {
+        "base_url": "https://dantepetclub.blob.core.windows.net/",
+        "container": "coat/",
+        "token": "?sp=r&st=2024-04-17T14:39:52Z&se=2025-09-10T22:39:52Z&spr=https&sv=2022-11-02&sr=c&sig=09ylCMrUq5l%2Fv5Y26yd0uSkRSOK8tSiukYP4F8TfPPY%3D",
+    },
 ]
 
 hobby = [
@@ -147,78 +178,87 @@ parquet_dir = f"{os.getcwd()}/parquet"
 coat = [
     {
         "name": "Black and White",
+        "picture": "black.png",
+        "thumbnail": "black-tmb.png",
+        "blob_id": 3,
         "description": "Classic Border Collie coat color combination of black and white.",
-        "url": "https://example.com/black_and_white_coat.jpg",
     },
     {
         "name": "Tri-color",
+        "picture": "tricolor.png",
+        "thumbnail": "tricolor-tmb.png",
+        "blob_id": 3,
         "description": "Border Collie coat featuring black, white, and tan markings.",
-        "url": "https://example.com/tri_color_coat.jpg",
     },
     {
         "name": "Blue Merle",
+        "picture": "blue-merle.png",
+        "thumbnail": "blue-merle-tmb.png",
+        "blob_id": 3,
         "description": "Blue Merle Border Collie coat with mottled gray and black patterns.",
-        "url": "https://example.com/blue_merle_coat.jpg",
     },
     {
         "name": "Red Merle",
+        "picture": "red-merle.png",
+        "thumbnail": "red-merle-tmb.png",
+        "blob_id": 3,
         "description": "Red Merle Border Collie coat with mottled red and white patterns.",
-        "url": "https://example.com/red_merle_coat.jpg",
     },
     {
-        "name": "Sable",
+        "name": "Blue",
+        "picture": "blue.png",
+        "thumbnail": "blue-tmb.png",
+        "blob_id": 3,
         "description": "Border Collie coat with a base of brown or tan with black-tipped hairs.",
-        "url": "https://example.com/sable_coat.jpg",
     },
     {
-        "name": "Red and White",
+        "name": "Chocolate Tricolor",
+        "picture": "chocolate-tricolor.png",
+        "thumbnail": "chocolate-tricolor-tmb.png",
+        "blob_id": 3,
         "description": "Border Collie coat color combination of red and white.",
-        "url": "https://example.com/red_and_white_coat.jpg",
     },
     {
         "name": "Chocolate",
+        "picture": "chocolate.png",
+        "thumbnail": "chocolate-tmb.png",
+        "blob_id": 3,
         "description": "Chocolate-colored Border Collie coat with deep brown coloration.",
-        "url": "https://example.com/chocolate_coat.jpg",
     },
     {
         "name": "Lilac",
+        "picture": "lilac.png",
+        "thumbnail": "lilac-tmb.png",
+        "blob_id": 3,
         "description": "Lilac-colored Border Collie coat with light brownish-gray coloration.",
-        "url": "https://example.com/lilac_coat.jpg",
     },
     {
-        "name": "Brindle",
+        "name": "Red Merle Tricolor",
+        "picture": "red-merle-tricolor.png",
+        "thumbnail": "red-merle-tricolor-tmb.png",
+        "blob_id": 3,
         "description": "Border Collie coat with tiger-stripe-like markings in various shades.",
-        "url": "https://example.com/brindle_coat.jpg",
     },
     {
-        "name": "Parti-color",
+        "name": "Blue Tricolor",
+        "picture": "blue-tricolor.png",
+        "thumbnail": "blue-tricolor-tmb.png",
+        "blob_id": 3,
         "description": "Parti-color Border Collie coat featuring large patches of two or more colors.",
-        "url": "https://example.com/parti_color_coat.jpg",
     },
     {
-        "name": "Tricolor Merle",
+        "name": "Lilac Tricolor",
+        "picture": "lilac-tricolor.png",
+        "thumbnail": "lilac-tricolor-tmb.png",
+        "blob_id": 3,
         "description": "A combination of black, white, and tan markings with a merle pattern overlay.",
-        "url": "https://example.com/tricolor_merle_coat.jpg",
     },
     {
-        "name": "Red and Tan",
+        "name": "Blue Merle Tricolor",
+        "picture": "blue-merle-tricolor.png",
+        "thumbnail": "blue-merle-tricolor-tmb.png",
+        "blob_id": 3,
         "description": "Red Border Collie coat with tan or cream markings.",
-        "url": "https://example.com/red_and_tan_coat.jpg",
-    },
-    {
-        "name": "Blue and Tan",
-        "description": "Blue Border Collie coat with tan or cream markings.",
-        "url": "https://example.com/blue_and_tan_coat.jpg",
-    },
-    {
-        "name": "Saddleback",
-        "description": "Border Collie coat pattern with darker coloration on the back resembling a saddle.",
-        "url": "https://example.com/saddleback_coat.jpg",
-    },
-    {
-        "name": "Masked",
-        "description": "Border Collie coat pattern where the dog's face is darker than the rest of its body.",
-        "url": "https://example.com/masked_coat.jpg",
     },
 ]
 
@@ -267,7 +307,7 @@ owner = [
         "first_name": "Alexandra",
         "middle_name": "Mercedes",
         "surname": "Ramirez",
-        "second_surname": "Aguja",
+        "second_surname": "",
         "nickname": "Meche",
         "identification_type_id": 1,
         "identification": "987654321",

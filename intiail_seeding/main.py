@@ -22,11 +22,11 @@ def batch_insert(cur: psycopg.cursor):
     ut.generic_insert(cur, insert_statement, "confirmation", dt.confirmation)
     ut.generic_insert(cur, insert_statement, "size", dt.size)
     ut.generic_insert(cur, insert_statement, "sex", dt.sex)
+    ut.generic_insert(cur, insert_statement, "blob", dt.blob)
     ut.generic_insert(cur, insert_statement, "gender", dt.gender)
     ut.generic_insert(cur, insert_statement, "hobby", dt.hobby)
     ut.generic_insert(cur, insert_statement, "coat", dt.coat)
     ut.generic_insert(cur, insert_statement, "avatar", dt.avatar)
-    ut.generic_insert(cur, insert_statement, "blob", dt.blob)
 
     ut.parquet_insert(cur, insert_statement, "country", dt.country)
     ut.parquet_insert(cur, insert_statement, "state", dt.state)
